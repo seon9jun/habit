@@ -1,5 +1,6 @@
+import { Helmet } from 'react-helmet';
 import { createGlobalStyle } from 'styled-components';
-import { ToDoList } from './ToDoList';
+import ToDolist from './Components/ToDoList';
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -10,12 +11,12 @@ const GlobalStyle = createGlobalStyle`
   del, dfn, em, img, ins, kbd, q, s, samp,
   small, strike, strong, sub, sup, tt, var,
   b, u, i, center,
-  dl, dt, dd, menu, ol, ul, li,
+  dl, dt, dd, ol, ul, li,
   fieldset, form, label, legend,
   table, caption, tbody, tfoot, thead, tr, th, td,
   article, aside, canvas, details, embed,
   figure, figcaption, footer, header, hgroup,
-  main, menu, nav, output, ruby, section, summary,
+  menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
     margin: 0;
     padding: 0;
@@ -27,20 +28,15 @@ const GlobalStyle = createGlobalStyle`
 
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure,
-  footer, header, hgroup, main, menu, nav, section {
+  footer, header, hgroup, menu, nav, section {
     display: block;
-  }
-
-  /* HTML5 hidden-attribute fix for newer browsers */
-  *[hidden] {
-    display: none;
   }
 
   body {
     line-height: 1;
   }
 
-  menu, ol, ul {
+  ol, ul {
     list-style: none;
   }
 
@@ -63,24 +59,32 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
-    font-family: 'Source Sans Pro', sans-serif;
-    background-color: ${(props) => props.theme.bgColor};
-    color: ${(props) => props.theme.textColor};
-    line-height: 1.2;
-  }
-
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #232932;
+    color: black;
+    height: 78vh;
   }
 `;
 
 function App() {
 	return (
 		<>
-			<GlobalStyle />
-			<ToDoList />
+			<Helmet>
+				<link
+					rel="stylesheet"
+					href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+					integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+					crossOrigin="anonymous"
+				></link>
+			</Helmet>
+			<GlobalStyle></GlobalStyle>
+			<ToDolist />
 		</>
 	);
 }
